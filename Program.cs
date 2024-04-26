@@ -1,7 +1,10 @@
-﻿public class GameManager
+﻿using System.Runtime.CompilerServices;
+
+public class GameManager
 {
     private Player player;
     private List<Item> inventory;
+    private List<Item> storeInventory;
 
     public GameManager()
     {
@@ -13,9 +16,19 @@
         player = new Player("창영", 1, "백수", 100, 100, 10, 5, 3000);
 
         inventory = new List<Item>();
-
+        storeInventory = new List<Item>();
         inventory.Add(new Item("천 옷", "기본 옷", Itemtype.Armor, 50, 0, 0, 5, 100));
-        inventory.Add(new Item("낡은 칼", "기본 칼", Itemtype.Armor, 0, 0, 5, 0, 100));
+        inventory.Add(new Item("낡은 칼", "기본 칼", Itemtype.Weapon, 0, 0, 5, 0, 100));
+        inventory.Add(new Item("루비 반지", "기본 체력 반지", Itemtype.Accessory, 50, 0, 0, 0, 100));
+        inventory.Add(new Item("사파이어 반지", "기본 마나 반지", Itemtype.Accessory, 0, 50, 0, 0, 100));
+
+        storeInventory.Add(new Item("판금 갑옷", "제법 쓸만한 갑옷", Itemtype.Armor, 100, 0, 0, 15, 1000));
+        storeInventory.Add(new Item("기사의 검", "제법 쓸만한 검", Itemtype.Weapon, 0, 0, 15, 0, 1000));
+        storeInventory.Add(new Item("블루 사파이어 반지", "마나 반지", Itemtype.Accessory, 50, 100, 0, 0, 1500));
+
+
+
+
 
     }
 
@@ -151,7 +164,80 @@
 
     private void StoreMenu()
     {
+        Console.Clear();
 
+        ConsoleUitility.ShowTitle("던전 입구 상점");
+        Console.WriteLine("던전입구 상점입니다.\n");
+        Console.WriteLine("[보유 골드]");
+        ConsoleUitility.PrintTextHighlights("Gold :", player.Gold.ToString(), "골드\n");
+        Console.WriteLine("[아이템 목록]");
+        for(int i = 0; i < storeInventory.Count; i++)
+        {
+            storeInventory[i].PrintStoreItemDescription();
+        }
+        Console.WriteLine("");
+        Console.WriteLine("1. 아이템 구매");
+        Console.WriteLine("0. 나가기 ");
+        Console.WriteLine("");
+        switch(ConsoleUitility.PromptMenuCholce(0, 1))
+        {
+            case 0:
+                MainMenu();
+                break;
+            case 1:
+                PurchaseMenu();
+                break;
+        }
+    }
+
+    private void PurchaseMenu(string? prompt = null)
+    {
+        if(prompt != null)
+        {
+            Console.Clear();
+            ConsoleUitility.ShowTitle(prompt);
+            Thread.Sleep(1000); // 몇밀리세컨동안 멈출것인지
+        }
+        Console.Clear();
+
+        ConsoleUitility.ShowTitle("던전 입구 상점");
+        Console.WriteLine("던전입구 상점입니다.\n");
+        Console.WriteLine("[보유 골드]");
+        ConsoleUitility.PrintTextHighlights("Gold :", player.Gold.ToString(), "골드\n");
+        Console.WriteLine("[아이템 목록]");
+        for (int i = 0; i < storeInventory.Count; i++)
+        {
+            storeInventory[i].PrintStoreItemDescription(true, i + 1);
+        }
+        Console.WriteLine("");
+        Console.WriteLine("0. 나가기");
+        Console.WriteLine("");
+
+        int keyInput = ConsoleUitility.PromptMenuCholce(0, storeInventory.Count);
+
+        switch(keyInput)
+        {
+            case 0:
+                StoreMenu();
+                break;
+            default:
+                if (storeInventory[keyInput -1].IsPurch) //이미 구매한 물품
+                {
+                    PurchaseMenu("이미 구매한 아이템입니다.");
+                }
+                else if(player.Gold >= storeInventory[keyInput - 1].Price) //돈이 충분한경우
+                {
+                    player.Gold -= storeInventory[keyInput - 1].Price; ;
+                    storeInventory[keyInput - 1].IsPurchased();
+                    inventory.Add(storeInventory[keyInput - 1]);
+                    PurchaseMenu();
+                }
+                else // 수중에 골드가 모자를 경우
+                {
+                    PurchaseMenu("골드가 부족합니다.");
+                }
+                break;
+        }
     }
 }
 

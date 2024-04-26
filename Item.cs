@@ -71,4 +71,43 @@ internal class Item
     {
         IsEqulp = !IsEqulp;
     }
+
+    internal void PrintStoreItemDescription(bool withNuber = false, int idx = 0)
+    {
+        Console.Write("- ");
+        if (withNuber)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write($"{idx}");
+            Console.ResetColor();
+        }
+
+        else Console.Write(ConsoleUitility.PadRightForMixedText(Name, 12));
+
+        Console.Write(" ㅣ ");
+
+        if (Atk != 0) Console.Write($"공격력 {(Atk >= 0 ? "+" : "")}{Atk} ");
+        if (Def != 0) Console.Write($"방어력 {(Atk >= 0 ? " + " : "")}{Def} ");
+        if (HP != 0) Console.Write($"체  력 {(Atk >= 0 ? " + " : "")}{HP} ");
+        if (MP != 0) Console.Write($"마  나 {(Atk >= 0 ? " + " : "")}{MP} ");
+
+        Console.Write(" ㅣ ");
+
+        Console.Write(ConsoleUitility.PadRightForMixedText(Desc, 12));
+
+        Console.Write(" ㅣ ");
+        if(IsPurch)
+        {
+            Console.WriteLine("구매 완료");
+        }
+        else
+        {
+            ConsoleUitility.PrintTextHighlights("", Price.ToString(), "골드");
+        }
+    }
+
+    internal void IsPurchased()
+    {
+        IsPurch = true;
+    }
 }
