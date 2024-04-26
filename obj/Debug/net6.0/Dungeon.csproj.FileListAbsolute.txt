@@ -1,0 +1,15 @@
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.csproj.AssemblyReference.cache
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.AssemblyInfoInputs.cache
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.AssemblyInfo.cs
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.csproj.CoreCompileInputs.cache
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\bin\Debug\net6.0\Dungeon.exe
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\bin\Debug\net6.0\Dungeon.deps.json
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\bin\Debug\net6.0\Dungeon.runtimeconfig.json
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\bin\Debug\net6.0\Dungeon.dll
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\bin\Debug\net6.0\Dungeon.pdb
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.dll
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\refint\Dungeon.dll
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.pdb
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\Dungeon.genruntimeconfig.cache
+C:\Users\ckddu\source\repos\Dungeon\Dungeon\obj\Debug\net6.0\ref\Dungeon.dll
